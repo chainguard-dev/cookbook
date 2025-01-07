@@ -36,4 +36,4 @@ ENTRYPOINT ["/usr/sbin/nginx"]
 CMD ["-c", "/etc/nginx/nginx.conf", "-e", "/dev/stderr", "-g", "daemon off;"]
 
 # docker build -t nginx-mod -f headers-more.Dockerfile .
-# docker run -p 8080:8080 nginx-mod
+# docker run -p 8080:8080 --name target nginx-mod
