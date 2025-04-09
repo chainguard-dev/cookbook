@@ -46,7 +46,10 @@ images=(
 
 echo ""
 echo "Image Size On Disk:"
-    
+
+# Initialize an array to store images that failed to pull
+failed_images=()
+
 # Loop through each item and append ":latest" if no tag is present
 for i in "${!images[@]}"; do
     if [[ "${images[i]}" != *:* ]]; then
@@ -58,9 +61,10 @@ for i in "${!images[@]}"; do
     # Pull the image and check for errors
     if docker pull "${images[i]}" 2>&1 | grep -iq "error"; then
       echo "Error encountered while pulling ${images[i]}. Skipping..."
+      failed_images+=("${images[i]}")
       continue
     fi
-
+    
     images[i]=$(docker inspect "${images[i]}" | jq -r '.[0].RepoDigests[0]')
     size=$(docker inspect "${images[i]}" | jq -r '.[0].Size // 0')
     size_mb=$(echo "scale=2; $size / 1024 / 1024" | bc)
@@ -244,3 +248,15 @@ echo "JSON Output:"
 echo "$json"
 echo "CSV Output:"
 echo "$json" | jq -r '.items[] | [.image, .scan.total, .scan.critical, .scan.high, .scan.medium, .scan.low, .scan.wontfix, .scan.fixed_total, .scan.fixed_critical, .scan.fixed_high, .scan.fixed_medium, .scan.fixed_low] | @csv'
+
+# Print out the list of images that failed to pull
+if [ ${#failed_images[@]} -ne 0 ]; then
+  echo ""
+  echo "The following images failed to pull:"
+  for img in "${failed_images[@]}"; do
+    echo "- $img"
+  done
+else
+  echo ""
+  echo "All images pulled successfully."
+fi
