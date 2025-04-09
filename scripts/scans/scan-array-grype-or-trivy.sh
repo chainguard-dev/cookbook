@@ -57,8 +57,8 @@ for i in "${!images[@]}"; do
     
     # Pull the image and check for errors
     if docker pull "${images[i]}" 2>&1 | grep -iq "error"; then
-      echo "Error encountered while pulling ${images[i]}. Exiting..."
-      exit 1
+      echo "Error encountered while pulling ${images[i]}. Skipping..."
+      continue
     fi
 
     images[i]=$(docker inspect "${images[i]}" | jq -r '.[0].RepoDigests[0]')
