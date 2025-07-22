@@ -1,0 +1,10 @@
+tigeraOperator:
+  registry: cgr.dev
+  image: ${ORGANIZATION}/tigera-operator
+
+installation:
+  enabled: true
+  variant: Calico
+  registry: cgr.dev
+  imagePath: ${ORGANIZATION}
+  imagePrefix: calico-
