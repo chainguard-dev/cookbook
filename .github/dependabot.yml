@@ -6,6 +6,6 @@
 version: 2
 updates:
   - package-ecosystem: maven
-    directory: "/fips/java/jar" # Location of package manifests
+    directory: "./fips/java/jar" # Location of package manifests
     schedule:
       interval: "daily"
