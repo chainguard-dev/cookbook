@@ -13,5 +13,53 @@
           <artifactId>bc-fips</artifactId>
           <version>2.0.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcpkix-fips -->
+        <dependency>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcpkix-fips</artifactId>
+          <version>2.1.8</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bctls-fips -->
+        <dependency>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bctls-fips</artifactId>
+          <version>2.0.20</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcmail-fips -->
+        <dependency>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcmail-fips</artifactId>
+          <version>2.0.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcutil-fips -->
+        <dependency>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcutil-fips</artifactId>
+          <version>2.1.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcpg-fips -->
+        <dependency>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcpg-fips</artifactId>
+          <version>2.1.10</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcmail-fips -->
+        <dependency>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcmail-fips</artifactId>
+          <version>2.0.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcutil-fips -->
+        <dependency>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcutil-fips</artifactId>
+          <version>2.0.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcpg-fips -->
+        <dependency>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcpg-fips</artifactId>
+          <version>2.1.10</version>
+        </dependency>
     </dependencies>
 </project>
