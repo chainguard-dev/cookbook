@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: pull-secret-updater
+spec:
+  schedule: "*/30 * * * *" # Every 30 mins
+  jobTemplate:
+    spec:
+      backoffLimit: 3
+      template:
+        spec:
+          serviceAccountName: pull-secret-updater
+          restartPolicy: Never
+          containers:
+            - name: pull-secret-updater
+              image: {{ .Values.image }}
+              imagePullPolicy: Always
+              args:
+                - --identity={{ .Values.identity }}
