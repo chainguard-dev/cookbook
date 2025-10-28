@@ -83,7 +83,7 @@ $ aws lambda invoke --function-name "${FUNCTION_NAME}" /dev/stderr >/dev/null
 
 The output should look similar to this:
 ```
-{"statusCode":200,"headers":null,"multiValueHeaders":null,"body":"\"Hello from Lambda!\""}%
+{"statusCode":200,"headers":null,"multiValueHeaders":null,"body":"\"Hello from Lambda!\""}
 ```
 
 ## Clean Up
