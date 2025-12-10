@@ -1,7 +1,7 @@
 #Define Chainguard org to pull images from
 ARG CHAINGUARD_ORG="chainguard"
 
-# BUILD STAGE: Use Chainguard distroless go variant for build stage. You may optionally switch to -dev if additional utilities are needed to build your app.
+# BUILD STAGE: Use Chainguard distroless dev variant for build stage. You may optionally switch to -dev if additional utilities are needed to build your app.
 FROM cgr.dev/${CHAINGUARD_ORG}/rust:latest AS build-image
 
 # Set working directory
