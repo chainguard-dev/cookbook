@@ -7,8 +7,6 @@ echo "Server running at http://{$host}:{$port}/\n";
 
 // Simple HTTP server handler
 $handler = function () {
-    header('Content-Type: text/plain');
-    http_response_code(200);
     echo "Hello from Chainguard PHP image!\n";
     echo "PHP Version: " . phpversion() . "\n";
 };

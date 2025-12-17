@@ -1,24 +1,21 @@
-FROM cgr.dev/chainguard-private/php:8.3-dev AS build-env
+FROM php:8.3
 
-USER root
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libxml2-dev \
+    zip \
+    unzip
 
-WORKDIR /app
-
-COPY . .
-
-# Install composer dependencies
-RUN composer install --no-dev --optimize-autoloader
-
-FROM cgr.dev/chainguard-private/php:8.3-dev
-
-ENV HOST=0.0.0.0
-ENV PORT=8080
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 WORKDIR /app
+COPY . /app
 
-COPY --from=build-env --chown=65532:65532 /app .
+# set up nonroot system user
+RUN useradd -r -s /bin/bash nonroot && \
+    chown -R nonroot /app && \
+    cd /app && composer install
 
-USER 65532
-EXPOSE 8080
-
-CMD ["php", "-S", "0.0.0.0:8080", "index.php"]
+USER nonroot
+ENTRYPOINT [ "php", "index.php"]

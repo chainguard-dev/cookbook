@@ -214,6 +214,34 @@ You should switch to the `root` user with `USER root` before running privileged
 commands (like `npm`) and then use `USER 65532` after to return to the non root
 user.
 
+## Entrypoints
+
+Unlike upstream images, the entrypoint for Chainguard base images is typically
+the runtime interpreter for the given language (i.e `java`, `python`, `php`)
+rather than a shell like `sh` or `bash`.
+
+This means that a `CMD` like `CMD ["python", "app.py"]` will cause an error in a
+Chainguard images because it translates to running `python python app.py`.
+
+We should prefer to use explicit entrypoints like:
+
+```
+ENTRYPOINT ["python", "app.py"]
+```
+
+## PHP
+
+It's common in Dockerfiles that build PHP applications to install composer in
+this way:
+
+```
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+```
+
+This is unnecessary when using the Chainguard `php` image because `composer` is
+already included in the `-dev` tags. Therefore, you can remove any lines that
+install composer.
+
 ## Testing
 
 Here's how to test your conversion:
