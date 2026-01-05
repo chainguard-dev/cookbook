@@ -1,6 +1,6 @@
-# aws-lambda-typescript
+# aws-lambda-ruby
 
-An example of using the Chainguard `ruby` image to build and run a containerized Typescript application on AWS Lambda as described in [this documentation](https://docs.aws.amazon.com/lambda/latest/dg/lambda-ruby.html).
+An example of using the Chainguard `ruby` image to build and run a containerized ruby application on AWS Lambda as described in [this documentation](https://docs.aws.amazon.com/lambda/latest/dg/lambda-ruby.html).
 
 ## Requirements
 
@@ -15,7 +15,7 @@ You should have these utilities installed:
 Export a name for your Lambda function. We'll use this value in later steps.
 
 ```
-$ export FUNCTION_NAME=chainguard-typescript-lambda
+$ export FUNCTION_NAME=chainguard-ruby-lambda
 ```
 
 Login to AWS. This may be different depending on how you authenticate to AWS.
