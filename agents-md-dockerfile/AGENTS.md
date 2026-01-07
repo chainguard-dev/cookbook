@@ -96,6 +96,9 @@ Every Chainguard image tag has a corresponding `-dev` variant. So for instance,
 using the `-dev` tag because it has more utilities in it and is less likely to
 cause issues.
 
+One known exception is `chainguard-base` which has no `-dev` variant. You should
+always use the `latest` tag.
+
 ### Versioning
 
 You should maintain the semantic versioning of the tags in the existing
@@ -254,6 +257,24 @@ the permissions of files.
 You should switch to the `root` user with `USER root` before running privileged
 commands (like `npm`) and then use `USER 65532` after to return to the non root
 user.
+
+You can figure out which user the image is configured to use by querying the
+image configuration. How you do that depends on the tools you have available:
+
+```
+# With crane.
+crane config cgr.dev/chainguard/python | jq -r '.config.User'
+
+# With docker.
+docker inspect --format='{{ .Config.User }}' cgr.dev/chainguard/python
+```
+
+You can also find this information in the Specifications tab of the Chainguard
+Image Directory:
+
+```
+https://images.chainguard.dev/directory/image/python/specifications
+```
 
 ## Entrypoints
 
